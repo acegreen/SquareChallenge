@@ -26,7 +26,7 @@ class EmployeeTableViewCell: UITableViewCell {
         }
 
         nameLabel.text = name
-        teamLabel.text = team
+        teamLabel.text = team.uppercased()
         bioLabel.text = bio
 
         accessibilityIdentifier = "Emloyee \(name)"

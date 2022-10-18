@@ -1,7 +1,7 @@
 ## Build tools & versions used
   pod 'PromiseKit', '6.10.0'
   pod 'Alamofire'
-  pod 'SwiftyJSON'
+  pod 'EmptyDataSet-Swift', '5.0.0'  
   pod 'SDWebImage', '5.2.1'
   pod 'SwiftLint'
 

@@ -7,10 +7,12 @@
 
 import UIKit
 import AGViperKit
+import EmptyDataSet_Swift
+import SwiftUI
 
 protocol EmployeesModuleView: ModuleView {}
 
-class EmployeesTableViewController: UITableViewController, EmployeesModuleView {
+class EmployeesTableViewController: UITableViewController, EmployeesModuleView, EmptyDataSetSource, EmptyDataSetDelegate {
 
     struct EmployeeCellIdentifier {
         static let employeeCell = "EmployeeTableViewCell"
@@ -20,8 +22,10 @@ class EmployeesTableViewController: UITableViewController, EmployeesModuleView {
 
     var employeesModel: EmployeesViewModel? {
         didSet {
-            title = NSLocalizedString("Square Challenge", comment: "")
-            tableView.reloadData()
+            DispatchQueue.main.asyncAfter(deadline: .now() + 5) {
+                self.tableView.reloadData()
+                self.tableView.refreshControl?.endRefreshing()
+            }
         }
     }
 
@@ -36,20 +40,36 @@ class EmployeesTableViewController: UITableViewController, EmployeesModuleView {
         super.viewDidLoad()
 
         setStyling()
-        fetchData()
+        fetchEmployees()
     }
 
     private func setStyling() {
+        title = NSLocalizedString("Square Challenge", comment: "")
         tableView.backgroundColor = Constants.cashGreen
+        tableView.emptyDataSetSource = self
+        tableView.emptyDataSetDelegate = self
+        tableView.refreshControl = UIRefreshControl()
+        let attributes = [NSAttributedString.Key.font: UIFont.preferredFont(forTextStyle: .body), NSAttributedString.Key.foregroundColor: UIColor.white]
+        tableView.refreshControl?.attributedTitle = NSAttributedString(string: "Refreshing...",
+                                                                       attributes: attributes)
+        tableView.refreshControl?.tintColor = .white
+        tableView.refreshControl?.addTarget(self, action: #selector(pullToRefreshAction), for: .valueChanged)
     }
 
-    private func fetchData() {
+    private func fetchEmployees() {
+        self.employeesModel = nil
+        self.tableView.reloadEmptyDataSet()
         presenter.updateView().done { [weak self] (employees: EmployeesViewModel) in
             self?.employeesModel = employees
         }.catch { error in
-            print(error)
-            // TODO[XXXX]: Show error
+            debugPrint(error)
+            self.employeesModel = nil
+            self.tableView.reloadEmptyDataSet()
         }
+    }
+
+    @objc func pullToRefreshAction() {
+        self.fetchEmployees()
     }
 
     // MARK: - UITableViewDataSource protocol conformance
@@ -79,5 +99,35 @@ class EmployeesTableViewController: UITableViewController, EmployeesModuleView {
                        bio: employeeViewModelAtIndex.bio)
 
         return cell
+    }
+
+    // MARK: - EmptyDataSetSource & EmptyDataSetDelegate
+
+    func title(forEmptyDataSet scrollView: UIScrollView) -> NSAttributedString? {
+        let string = "No Employees"
+        let attributes = [NSAttributedString.Key.font: UIFont.preferredFont(forTextStyle: .headline), NSAttributedString.Key.foregroundColor: UIColor.white]
+        return NSAttributedString(string: string, attributes: attributes)
+    }
+
+    func description(forEmptyDataSet scrollView: UIScrollView) -> NSAttributedString? {
+        let string = "There is a 5 second delay to simulate an empty data"
+        let attributes = [NSAttributedString.Key.font: UIFont.preferredFont(forTextStyle: .body), NSAttributedString.Key.foregroundColor: UIColor.white]
+        return NSAttributedString(string: string, attributes: attributes)
+    }
+
+    func image(forEmptyDataSet scrollView: UIScrollView) -> UIImage? {
+        let config = UIImage.SymbolConfiguration(
+            pointSize: 100, weight: .medium, scale: .default)
+        let emptyImage = UIImage(systemName: "person.fill", withConfiguration: config)
+        return emptyImage
+    }
+
+    func imageTintColor(forEmptyDataSet scrollView: UIScrollView) -> UIColor? {
+        return UIColor.white
+    }
+
+    // TODO: fix verticalOffset pull to refresh (https://github.com/Xiaoye220/EmptyDataSet-Swift/issues/52)
+    func verticalOffset(forEmptyDataSet scrollView: UIScrollView) -> CGFloat {
+        return -100
     }
 }

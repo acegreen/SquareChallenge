@@ -1,9 +1,9 @@
 ## Build tools & versions used
-  pod 'PromiseKit', '6.10.0'
-  pod 'Alamofire'
-  pod 'SwiftyJSON'
-  pod 'SDWebImage', '5.2.1'
-  pod 'SwiftLint'
+  pod 'PromiseKit', '6.10.0'  
+  pod 'Alamofire'  
+  pod 'SwiftyJSON'  
+  pod 'SDWebImage', '5.2.1'  
+  pod 'SwiftLint'. 
 
 ## Steps to run the app
 1) pod install
@@ -21,16 +21,17 @@ There was not alot of UI involved and even thought thats one of my strong suits,
 1 day
 
 ## Did you make any trade-offs for this project? What would you have done differently with more time?
-N/A
+- Took more time to optimize UI to match Block's 
+- Made a SwiftUI version (see StashChallenge, link below)
 
 ## What do you think is the weakest part of your project?
-UI?
+UI (altough thats my strong suit)
 
 ## Did you copy any code or dependencies? Please make sure to attribute them here!
 Used my own AGViperKit that I have been using across projects.
 
 ## Is there any other information you’d like us to know?
-Checkout https://github.com/acegreen/StashChallenge as this project uses the same foundation I used here
+Checkout https://github.com/acegreen/StashChallenge as this project uses the same foundation I used here as well as includes a SwiftUI implementation.
 Checkout Rally/megazord-ios repo as the git history would reveal ALOT about my contribution (not sure that possible)
 
 #### Resources

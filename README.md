@@ -1,9 +1,9 @@
 ## Build tools & versions used
-  pod 'PromiseKit', '6.10.0'
-  pod 'Alamofire'
+  pod 'PromiseKit', '6.10.0'  
+  pod 'Alamofire'  
   pod 'EmptyDataSet-Swift', '5.0.0'  
-  pod 'SDWebImage', '5.2.1'
-  pod 'SwiftLint'
+  pod 'SDWebImage', '5.2.1'  
+  pod 'SwiftLint'  
 
 ## Steps to run the app
 1) pod install

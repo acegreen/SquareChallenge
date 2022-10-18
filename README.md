@@ -41,3 +41,4 @@ Checkout Rally/megazord-ios repo as the git history would reveal ALOT about my c
 
 #### Screenshots
 ![Screenshot1](/Screenshots/Screenshot_1.png)
+![Screenshot2](/Screenshots/Screenshot_2.png)

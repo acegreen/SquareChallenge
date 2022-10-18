@@ -9,7 +9,7 @@ import Foundation
 import UIKit
 
 public class StyledNavigationController: UINavigationController {
-    
+
     enum ButtonAppearanceType {
         case back, plain, done
     }

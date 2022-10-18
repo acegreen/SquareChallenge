@@ -34,7 +34,7 @@ public class EmployeesViewModel: Codable {
     public init(employeeViewModels: [EmployeeViewModel]) {
         self.employeeViewModels = employeeViewModels
     }
-    
+
     func getEmployeesCount() -> Int? {
         return employeeViewModels.count
     }

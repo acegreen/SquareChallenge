@@ -11,6 +11,7 @@ import PromiseKit
 public protocol ModuleInteractor: AnyObject {
     func configure(presenter: ModulePresenter)
     func request<T: Codable>(_ route: APIConfiguration, decoder: JSONDecoder) -> Promise<T>
+    // swiftlint:disable:next function_parameter_count
     func getLocalObject<T>(type: T.Type,
                            fromFileName fileName: String,
                            fileExtension: String,

@@ -11,20 +11,22 @@ import XCTest
 class InteractorTests: XCTestCase {
 
     let interactor = EmployeesInteractor()
-    
+
     private var employees: Employees!
-    
+
     override func setUp() {
         super.setUp()
-        
+
         let expectation = self.expectation(description: "expectation")
 
         interactor.fetchEmployees()
             .done { employees in
                 self.employees = employees
                 expectation.fulfill()
+            }.catch { error in
+                print(error)
             }
-        
+
         waitForExpectations(timeout: 10, handler: nil)
     }
 
@@ -59,7 +61,7 @@ class InteractorTests: XCTestCase {
         XCTAssertEqual(firstEmployeeViewModel?.name, "Justine Mason")
         XCTAssertEqual(firstEmployeeViewModel?.team, "Point of Sale")
         XCTAssertEqual(firstEmployeeViewModel?.bio, "Engineer on the Point of Sale team.")
-        
+
         expectation.fulfill()
         waitForExpectations(timeout: 10, handler: nil)
     }

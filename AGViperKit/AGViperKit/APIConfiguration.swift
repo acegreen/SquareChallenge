@@ -85,8 +85,7 @@ public extension APIConfiguration {
         urlRequest.httpMethod = method.rawValue
 
         // Global Headers
-        let languageCode = Locale.preferredLanguages.first ?? "en-US"
-        var globalHeaders = [HTTPHeaderField.acceptType.rawValue: ContentType.json.rawValue]
+        let globalHeaders = [HTTPHeaderField.acceptType.rawValue: ContentType.json.rawValue]
 
         globalHeaders.forEach { urlRequest.addValue($0.value, forHTTPHeaderField: $0.key) }
 
@@ -113,7 +112,7 @@ public extension APIConfiguration {
                 urlRequest = try encoder.encode(urlRequest, with: httpBody)
             }
         }
-        
+
         urlRequest = try URLEncoding.queryString.encode(urlRequest, with: nil)
 
         // Access token
@@ -124,4 +123,3 @@ public extension APIConfiguration {
         return urlRequest
     }
 }
-

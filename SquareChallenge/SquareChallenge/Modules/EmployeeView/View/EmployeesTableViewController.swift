@@ -11,11 +11,11 @@ import AGViperKit
 protocol EmployeesModuleView: ModuleView {}
 
 class EmployeesTableViewController: UITableViewController, EmployeesModuleView {
-    
+
     struct EmployeeCellIdentifier {
         static let employeeCell = "EmployeeTableViewCell"
     }
-    
+
     var presenter: EmployeesModulePresenter!
 
     var employeesModel: EmployeesViewModel? {
@@ -24,12 +24,12 @@ class EmployeesTableViewController: UITableViewController, EmployeesModuleView {
             tableView.reloadData()
         }
     }
-    
+
     func configure(presenter: ModulePresenter) {
         assert(presenter is EmployeesModulePresenter, "presenter parameter must be of type EmployeesModulePresenter")
         self.presenter = presenter as? EmployeesModulePresenter
     }
-    
+
     // MARK: - View lifecycle
 
     override func viewDidLoad() {
@@ -51,7 +51,7 @@ class EmployeesTableViewController: UITableViewController, EmployeesModuleView {
             // TODO[XXXX]: Show error
         }
     }
-    
+
     // MARK: - UITableViewDataSource protocol conformance
 
     override func tableView(_ tableView: UITableView,
@@ -81,4 +81,3 @@ class EmployeesTableViewController: UITableViewController, EmployeesModuleView {
         return cell
     }
 }
-

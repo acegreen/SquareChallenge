@@ -10,14 +10,14 @@ import AGViperKit
 @testable import SquareChallenge
 
 class PresenterTests: XCTestCase {
-    
+
     private var employeesViewModel: EmployeesViewModel!
-    
+
     override func setUp() {
         super.setUp()
-        
+
         let expectation = self.expectation(description: "expectation")
-        
+
         EmployeesPresenter.shared.updateView()
         .done { employees in
             self.employeesViewModel = employees
@@ -25,7 +25,7 @@ class PresenterTests: XCTestCase {
         }.catch { error in
             XCTFail(error.localizedDescription)
         }
-        
+
         waitForExpectations(timeout: 10, handler: nil)
     }
 

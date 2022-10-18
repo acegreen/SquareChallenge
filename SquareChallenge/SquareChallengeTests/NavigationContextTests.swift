@@ -19,12 +19,12 @@ class NavigationContextTests: XCTestCase {
 
         let presenter = EmployeesPresenter.shared
         let interactor = EmployeesInteractor.shared
-        let EmployeesTableViewController = UIStoryboard.employees.controller(class: EmployeesTableViewController.self)
+        let employeesTableViewController = UIStoryboard.employees.controller(class: EmployeesTableViewController.self)
 
         XCTAssertTrue(type(of: navigationContext.presenter) == type(of: presenter))
         XCTAssertTrue(type(of: navigationContext.interactor) == type(of: interactor))
-        XCTAssertTrue(type(of: navigationContext.view) == type(of: EmployeesTableViewController))
-        XCTAssertTrue(type(of: navigationContext.asViewController()) == type(of: EmployeesTableViewController))
+        XCTAssertTrue(type(of: navigationContext.view) == type(of: employeesTableViewController))
+        XCTAssertTrue(type(of: navigationContext.asViewController()) == type(of: EmployeesTableViewController()))
 
         expectation.fulfill()
         waitForExpectations(timeout: 10, handler: nil)

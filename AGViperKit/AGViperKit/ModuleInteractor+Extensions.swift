@@ -28,8 +28,8 @@ public extension ModuleInteractor {
 
         func request() -> Promise<T> {
             return Promise { seal in
-                self.buildRequest(forRoute: route).responseDecodable(decoder: decoder) { [weak self] (response: DataResponse<T, AFError>) in
-                    
+                self.buildRequest(forRoute: route).responseDecodable(decoder: decoder) { (response: DataResponse<T, AFError>) in
+
 //                    debugPrint(response)
 
                     switch response.result {
@@ -45,7 +45,7 @@ public extension ModuleInteractor {
 
         return request()
     }
-    
+
     func getLocalObject<T>(type: T.Type,
                            fromFileName fileName: String,
                            fileExtension: String = "json",

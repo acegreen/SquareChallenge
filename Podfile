@@ -32,3 +32,12 @@ target 'SquareChallenge' do
   end
 end
 
+# To inhibit pods related warnings
+post_install do |installer|
+  installer.pods_project.targets.each do |target|
+    target.build_configurations.each do |config|
+      config.build_settings.delete 'ARCHS'
+      config.build_settings.delete 'IPHONEOS_DEPLOYMENT_TARGET'
+    end
+  end
+end

@@ -8,13 +8,13 @@
 import AGViperKit
 
 enum EmployeesAPIConfiguration: APIConfiguration {
-    
+
     case employees
 
     var accessToken: String? {
         return nil
     }
-    
+
     var baseURLString: String {
         return "https://s3.amazonaws.com/"
     }

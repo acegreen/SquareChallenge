@@ -5,7 +5,6 @@
 //  Created by Ace Green on 2022-10-18.
 //
 
-
 import XCTest
 import AGViperKit
 @testable import SquareChallenge
@@ -15,7 +14,7 @@ class ViewModelTests: XCTestCase {
     func testMockViewModel() throws {
 
         let expectation = self.expectation(description: "expectation")
-        
+
         let mockEmployeeViewModel = EmployeeViewModel(photoURL: URL(string: "https://some.url/path1.jpg"),
                                                       name: "Eric Rogers",
                                                       team: "Seller",
@@ -30,4 +29,3 @@ class ViewModelTests: XCTestCase {
         waitForExpectations(timeout: 10, handler: nil)
     }
 }
-

@@ -11,9 +11,9 @@ import PromiseKit
 
 public enum EmployeesError: Error {
     case noResults
-    
+
     // MARK: Override Error+Log
-    
+
     var reasonString: String {
         return "\(self)"
     }
@@ -24,21 +24,21 @@ protocol EmployeesModuleInteractor: ModuleInteractor {
 }
 
 class EmployeesInteractor: EmployeesModuleInteractor {
-    
+
     static let shared = EmployeesInteractor()
-    
+
     weak var presenter: EmployeesModulePresenter?
-    
+
     func configure(presenter: ModulePresenter) {
         assert(presenter is EmployeesModulePresenter)
         self.presenter = presenter as? EmployeesModulePresenter
     }
-    
+
     func fetchEmployees() -> Promise<Employees> {
-        
+
         #if DEBUG
-        
-        let localObjectPromise = Promise { result in
+
+        _ = Promise { result in
             getLocalObject(type: Employees.self, fromFileName: "Employees") { (object: Employees?) in
                 if let employeeModel: Employees = object {
                     result.resolve(employeeModel, nil)
@@ -47,10 +47,9 @@ class EmployeesInteractor: EmployeesModuleInteractor {
                 }
             }
         }
-        
+
         #endif
-        
+
         return request(EmployeesAPIConfiguration.employees)
     }
 }
-

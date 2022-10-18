@@ -17,7 +17,7 @@ public class Employee: Codable {
     let photoURLLarge: String
     let team: String
     let employeeType: String
-    
+
     enum CodingKeys: String, CodingKey {
         case uuid
         case name = "full_name"
@@ -29,7 +29,7 @@ public class Employee: Codable {
         case team
         case employeeType = "employee_type"
     }
-    
+
     public init(uuid: String, name: String, phone: String, email: String, bio: String, photoURLSmall: String, photoURLLarge: String, team: String, employeeType: String) {
         self.uuid = uuid
         self.name = name

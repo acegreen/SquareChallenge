@@ -120,7 +120,7 @@ class EmployeesTableViewController: UITableViewController, EmployeesModuleView, 
     func image(forEmptyDataSet scrollView: UIScrollView) -> UIImage? {
         let config = UIImage.SymbolConfiguration(
             pointSize: 100, weight: .medium, scale: .default)
-        let emptyImage = UIImage(systemName: "person.fill", withConfiguration: config)
+        let emptyImage = UIImage(systemName: "person.3.fill", withConfiguration: config)
         return emptyImage
     }
 
@@ -130,6 +130,6 @@ class EmployeesTableViewController: UITableViewController, EmployeesModuleView, 
 
     // TODO: fix verticalOffset pull to refresh (https://github.com/Xiaoye220/EmptyDataSet-Swift/issues/52)
     func verticalOffset(forEmptyDataSet scrollView: UIScrollView) -> CGFloat {
-        return -100
+        return -80
     }
 }

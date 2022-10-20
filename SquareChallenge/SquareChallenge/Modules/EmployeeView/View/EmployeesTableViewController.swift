@@ -58,7 +58,9 @@ class EmployeesTableViewController: UITableViewController, EmployeesModuleView, 
 
     private func fetchEmployees() {
         self.employeesModel = nil
-        self.tableView.reloadEmptyDataSet()
+        DispatchQueue.main.async {
+            self.tableView.reloadEmptyDataSet()
+        }
         presenter.updateView().done { [weak self] (employees: EmployeesViewModel) in
             self?.employeesModel = employees
         }.catch { error in

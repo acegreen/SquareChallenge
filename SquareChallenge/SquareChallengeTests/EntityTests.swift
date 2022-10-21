@@ -11,27 +11,28 @@ import AGViperKit
 
 class EntityTests: XCTestCase {
 
-    func testAchievementEntity() throws {
+    func testMockEmployeeEntity() throws {
 
         let expectation = self.expectation(description: "expectation")
 
-        let mockEmployee = Employee(uuid: "some-uuid",
-                                    name: "Eric Rogers",
-                                    phone: "5556669870",
-                                    email: "erogers.demo@squareup.com",
-                                    bio: "A short biography describing the employee.",
-                                    photoURLSmall: "https://some.url/path1.jpg",
-                                    photoURLLarge: "https://some.url/path2.jpg",
-                                    team: "Seller",
+        let mockEmployee = Employee(uuid: "0d8fcc12-4d0c-425c-8355-390b312b909c",
+                                    name: "Justine Mason",
+                                    phone: "5553280123",
+                                    email: "jmason.demo@squareup.com",
+                                    bio: "Engineer on the Point of Sale team.",
+                                    photoURLSmall: "https://s3.amazonaws.com/sq-mobile-interview/photos/16c00560-6dd3-4af4-97a6-d4754e7f2394/small.jpg",
+                                    photoURLLarge: "https://s3.amazonaws.com/sq-mobile-interview/photos/16c00560-6dd3-4af4-97a6-d4754e7f2394/large.jpg",
+                                    team: "Point of Sale",
                                     employeeType: "FULL_TIME")
 
-        XCTAssertEqual(mockEmployee.uuid, "some-uuid")
-        XCTAssertEqual(mockEmployee.name, "Eric Rogers")
-        XCTAssertEqual(mockEmployee.phone, "5556669870")
-        XCTAssertEqual(mockEmployee.email, "erogers.demo@squareup.com")
-        XCTAssertEqual(mockEmployee.bio, "A short biography describing the employee.")
-        XCTAssertEqual(mockEmployee.photoURLSmall, "https://some.url/path1.jpg")
-        XCTAssertEqual(mockEmployee.photoURLLarge, "https://some.url/path2.jpg")
+        XCTAssertEqual(mockEmployee.uuid, "0d8fcc12-4d0c-425c-8355-390b312b909c")
+        XCTAssertEqual(mockEmployee.name, "Justine Mason")
+        XCTAssertEqual(mockEmployee.phone, "5553280123")
+        XCTAssertEqual(mockEmployee.email, "jmason.demo@squareup.com")
+        XCTAssertEqual(mockEmployee.bio, "Engineer on the Point of Sale team.")
+        XCTAssertEqual(mockEmployee.photoURLSmall, "https://s3.amazonaws.com/sq-mobile-interview/photos/16c00560-6dd3-4af4-97a6-d4754e7f2394/small.jpg")
+        XCTAssertEqual(mockEmployee.photoURLLarge, "https://s3.amazonaws.com/sq-mobile-interview/photos/16c00560-6dd3-4af4-97a6-d4754e7f2394/large.jpg")
+        XCTAssertEqual(mockEmployee.team, "Point of Sale")
         XCTAssertEqual(mockEmployee.employeeType, "FULL_TIME")
 
         expectation.fulfill()

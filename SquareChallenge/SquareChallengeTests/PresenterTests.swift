@@ -38,26 +38,15 @@ class PresenterTests: XCTestCase {
         waitForExpectations(timeout: 10, handler: nil)
     }
 
-    func testEmployeeAtIndexZero() throws {
+    func testEmployeeViewModelAtIndexZero() throws {
 
         let expectation = self.expectation(description: "expectation")
 
-        let employeeViewModelAtIndexZero = employeesViewModel.getEmployee(at: 0)
-        let mockEmployeeViewModel = EmployeeViewModel(photoURL: URL(string: "https://s3.amazonaws.com/sq-mobile-interview/photos/16c00560-6dd3-4af4-97a6-d4754e7f2394/small.jpg"),
-                                                      name: "Justine Mason",
-                                                      team: "Point of Sale",
-                                                      bio: "Engineer on the Point of Sale team.")
-        XCTAssertEqual(employeeViewModelAtIndexZero, mockEmployeeViewModel)
-
-        expectation.fulfill()
-        waitForExpectations(timeout: 10, handler: nil)
-    }
-
-    func testEmployeesCount() throws {
-
-        let expectation = self.expectation(description: "expectation")
-
-        XCTAssertEqual(employeesViewModel.getEmployeesCount(), 11)
+        let employeesViewModelsAtIndexZero = employeesViewModel.getEmployee(at: 0)
+        XCTAssertEqual(employeesViewModelsAtIndexZero?.photoURL, URL(string: "https://s3.amazonaws.com/sq-mobile-interview/photos/16c00560-6dd3-4af4-97a6-d4754e7f2394/small.jpg"))
+        XCTAssertEqual(employeesViewModelsAtIndexZero?.name, "Justine Mason")
+        XCTAssertEqual(employeesViewModelsAtIndexZero?.bio, "Engineer on the Point of Sale team.")
+        XCTAssertEqual(employeesViewModelsAtIndexZero?.team, "Point of Sale")
 
         expectation.fulfill()
         waitForExpectations(timeout: 10, handler: nil)

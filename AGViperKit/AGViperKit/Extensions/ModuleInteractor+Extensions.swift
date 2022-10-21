@@ -30,8 +30,6 @@ public extension ModuleInteractor {
             return Promise { seal in
                 self.buildRequest(forRoute: route).responseDecodable(decoder: decoder) { (response: DataResponse<T, AFError>) in
 
-//                    debugPrint(response)
-
                     switch response.result {
                     case .success(let decodable):
                         seal.fulfill(decodable)
@@ -69,7 +67,6 @@ public extension ModuleInteractor {
                     }
                 }
             } else {
-                print("no url")
                 completionHandler(nil)
             }
         }

@@ -13,11 +13,11 @@ enum EmployeesNavigationContext: NavigationContext {
     case main
 
     var presenter: ModulePresenter {
-        return EmployeesPresenter.shared
+        return EmployeesPresenter()
     }
 
     var interactor: ModuleInteractor {
-        return EmployeesInteractor.shared
+        return EmployeesInteractor()
     }
 
     var router: ModuleRouter {
@@ -27,7 +27,7 @@ enum EmployeesNavigationContext: NavigationContext {
     var view: ModuleView {
         switch self {
         case .main:
-            return Constants.employeesStoryboard.controller(class: EmployeesTableViewController.self)
+            return Constants.Storyboards.employees.controller(class: EmployeesTableViewController.self)
         }
     }
 }

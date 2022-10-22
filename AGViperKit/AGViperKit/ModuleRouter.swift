@@ -18,7 +18,7 @@ public protocol ModuleRouter: AnyObject {
 }
 
 public class DefaultRouter: ModuleRouter {
-    public init() {}
+    public init() { }
 }
 
 public extension ModuleRouter {

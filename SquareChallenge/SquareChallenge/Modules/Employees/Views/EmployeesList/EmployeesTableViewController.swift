@@ -12,7 +12,7 @@ import SwiftUI
 
 protocol EmployeesModuleView: ModuleView {}
 
-class EmployeesTableViewController: UITableViewController, EmployeesModuleView, EmptyDataSetSource, EmptyDataSetDelegate {
+class EmployeesTableViewController: UITableViewController, EmployeesModuleView {
 
     struct EmployeeCellIdentifier {
         static let employeeCell = "EmployeeTableViewCell"
@@ -20,7 +20,7 @@ class EmployeesTableViewController: UITableViewController, EmployeesModuleView, 
 
     var presenter: EmployeesModulePresenter!
 
-    var employeesModel: EmployeesViewModel? {
+    var employeesViewModel: EmployeesViewModel? {
         didSet {
             DispatchQueue.main.asyncAfter(deadline: .now() + 5) {
                 self.tableView.reloadData()
@@ -69,15 +69,15 @@ class EmployeesTableViewController: UITableViewController, EmployeesModuleView, 
     }
 
     private func fetchEmployees() {
-        self.employeesModel = nil
+        self.employeesViewModel = nil
         DispatchQueue.main.async {
             self.tableView.reloadEmptyDataSet()
         }
         presenter.updateView().done { [weak self] (employees: EmployeesViewModel) in
-            self?.employeesModel = employees
+            self?.employeesViewModel = employees
         }.catch { error in
             debugPrint(error)
-            self.employeesModel = nil
+            self.employeesViewModel = nil
             self.tableView.reloadEmptyDataSet()
         }
     }
@@ -98,14 +98,14 @@ class EmployeesTableViewController: UITableViewController, EmployeesModuleView, 
     }
 
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return employeesModel?.getEmployeesCount() ?? 0
+        return employeesViewModel?.getEmployeesCount() ?? 0
     }
 
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
 
         guard let cell = tableView.dequeueReusableCell(withIdentifier: EmployeeCellIdentifier.employeeCell,
                                                        for: indexPath) as? EmployeeTableViewCell,
-              let employeeViewModelAtIndex = employeesModel?.getEmployee(at: indexPath.row) else { return UITableViewCell() }
+              let employeeViewModelAtIndex = employeesViewModel?.getEmployee(at: indexPath.row) else { return UITableViewCell() }
 
         cell.configure(photoURL: employeeViewModelAtIndex.photoURL,
                        name: employeeViewModelAtIndex.name,

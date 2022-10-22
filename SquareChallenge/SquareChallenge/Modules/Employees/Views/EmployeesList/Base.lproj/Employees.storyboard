@@ -11,7 +11,7 @@
         <scene sceneID="yR2-ZG-9ty">
             <objects>
                 <tableViewController storyboardIdentifier="EmployeesTableViewController" useStoryboardIdentifierAsRestorationIdentifier="YES" id="byY-Su-ye6" customClass="EmployeesTableViewController" customModule="SquareChallenge" customModuleProvider="target" sceneMemberID="viewController">
-                    <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="insetGrouped" separatorStyle="default" allowsSelection="NO" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="18" estimatedSectionHeaderHeight="-1" sectionFooterHeight="18" estimatedSectionFooterHeight="-1" id="pOG-XS-CUW">
+                    <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="insetGrouped" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="18" estimatedSectionHeaderHeight="-1" sectionFooterHeight="18" estimatedSectionFooterHeight="-1" id="pOG-XS-CUW">
                         <rect key="frame" x="0.0" y="0.0" width="390" height="844"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <prototypes>
@@ -88,10 +88,11 @@
                             <outlet property="delegate" destination="byY-Su-ye6" id="A2g-7f-dNw"/>
                         </connections>
                     </tableView>
+                    <navigationItem key="navigationItem" id="4lP-8V-OcT"/>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="bQT-NR-gwD" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="384.61538461538458" y="-48.341232227488149"/>
+            <point key="canvasLocation" x="1313.8461538461538" y="-48.341232227488149"/>
         </scene>
     </scenes>
     <resources>

@@ -25,8 +25,6 @@ protocol EmployeesModuleInteractor: ModuleInteractor {
 
 class EmployeesInteractor: EmployeesModuleInteractor {
 
-    static let shared = EmployeesInteractor()
-
     weak var presenter: EmployeesModulePresenter?
 
     func configure(presenter: ModulePresenter) {

@@ -43,3 +43,24 @@ public class EmployeesViewModel: Codable {
         return employeeViewModels[index]
     }
 }
+
+extension Employees {
+    func asEmployeesViewModel() -> EmployeesViewModel {
+        let employeeViewModels = employees.map { employee in
+            return EmployeeViewModel(photoURL: employee.getImageURL(),
+                                     name: employee.name,
+                                     team: employee.team,
+                                     bio: employee.bio)
+        }
+        return EmployeesViewModel(employeeViewModels: employeeViewModels)
+    }
+}
+
+extension Employee {
+    func asEmployeeViewModel() -> EmployeeViewModel {
+        return EmployeeViewModel(photoURL: getImageURL(),
+                                 name: name,
+                                 team: team,
+                                 bio: bio)
+    }
+}

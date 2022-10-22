@@ -108,11 +108,11 @@
 				2321EF98267577B20095B007 /* Bundle */,
 				23BB626A28FED5A500458905 /* URLPath.swift */,
 				23BB626828FED4D400458905 /* APIConfiguration.swift */,
+				2321EFA7267577B20095B007 /* NavigationContext.swift */,
+				2321EFAD267577B20095B007 /* ModuleRouter.swift */,
 				2321EFA9267577B20095B007 /* ModuleInteractor.swift */,
 				2321EF97267577B20095B007 /* ModulePresenter.swift */,
-				2321EFAD267577B20095B007 /* ModuleRouter.swift */,
 				2321EFA8267577B20095B007 /* ModuleView.swift */,
-				2321EFA7267577B20095B007 /* NavigationContext.swift */,
 				2321EFE926757FEE0095B007 /* Helpers */,
 				23BB626E28FED6B700458905 /* Extensions */,
 			);

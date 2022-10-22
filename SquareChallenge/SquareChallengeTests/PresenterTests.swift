@@ -11,6 +11,8 @@ import AGViperKit
 
 class PresenterTests: XCTestCase {
 
+    let presentor = EmployeesPresenter()
+
     private var employeesViewModel: EmployeesViewModel!
 
     override func setUp() {
@@ -18,7 +20,9 @@ class PresenterTests: XCTestCase {
 
         let expectation = self.expectation(description: "expectation")
 
-        EmployeesPresenter.shared.updateView()
+        let employeesTableViewController = Constants.Storyboards.employees.controller(class: EmployeesTableViewController.self)
+        presentor.configure(view: employeesTableViewController, interactor: EmployeesInteractor(), router: DefaultRouter())
+        presentor.updateView()
         .done { employees in
             self.employeesViewModel = employees
             expectation.fulfill()

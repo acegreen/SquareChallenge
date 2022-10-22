@@ -17,9 +17,9 @@ class NavigationContextTests: XCTestCase {
 
         let expectation = self.expectation(description: "expectation")
 
-        let presenter = EmployeesPresenter.shared
-        let interactor = EmployeesInteractor.shared
-        let employeesTableViewController = UIStoryboard.employees.controller(class: EmployeesTableViewController.self)
+        let presenter = EmployeesPresenter()
+        let interactor = EmployeesInteractor()
+        let employeesTableViewController = Constants.Storyboards.employees.controller(class: EmployeesTableViewController.self)
 
         XCTAssertTrue(type(of: navigationContext.presenter) == type(of: presenter))
         XCTAssertTrue(type(of: navigationContext.interactor) == type(of: interactor))

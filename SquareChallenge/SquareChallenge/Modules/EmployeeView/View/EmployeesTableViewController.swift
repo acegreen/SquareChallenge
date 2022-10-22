@@ -46,14 +46,26 @@ class EmployeesTableViewController: UITableViewController, EmployeesModuleView, 
     private func setStyling() {
         title = NSLocalizedString("Square Challenge", comment: "")
         tableView.backgroundColor = Constants.cashGreen
-        tableView.emptyDataSetSource = self
-        tableView.emptyDataSetDelegate = self
+        
         tableView.refreshControl = UIRefreshControl()
         let attributes = [NSAttributedString.Key.font: UIFont.preferredFont(forTextStyle: .body), NSAttributedString.Key.foregroundColor: UIColor.white]
         tableView.refreshControl?.attributedTitle = NSAttributedString(string: "Refreshing...",
                                                                        attributes: attributes)
         tableView.refreshControl?.tintColor = .white
         tableView.refreshControl?.addTarget(self, action: #selector(pullToRefreshAction), for: .valueChanged)
+        
+        tableView.emptyDataSetView { emptyView in
+            let titleAttributes = [NSAttributedString.Key.font: UIFont.preferredFont(forTextStyle: .headline), NSAttributedString.Key.foregroundColor: UIColor.white]
+            let descriptionAtrributes = [NSAttributedString.Key.font: UIFont.preferredFont(forTextStyle: .body), NSAttributedString.Key.foregroundColor: UIColor.white]
+            emptyView.titleLabelString(NSAttributedString(string: "No Employees", attributes: titleAttributes))
+            emptyView.detailLabelString(NSAttributedString(string: "There is a 5 second delay to simulate an empty data", attributes: descriptionAtrributes))
+            let imageConfig = UIImage.SymbolConfiguration(
+                pointSize: 100, weight: .medium, scale: .default)
+            emptyView.image(UIImage(systemName: "person.3.fill", withConfiguration: imageConfig))
+            emptyView.imageTintColor(.white)
+            // TODO: fix verticalOffset pull to refresh (https://github.com/Xiaoye220/EmptyDataSet-Swift/issues/52)
+            emptyView.verticalOffset(-80)
+        }
     }
 
     private func fetchEmployees() {
@@ -101,35 +113,5 @@ class EmployeesTableViewController: UITableViewController, EmployeesModuleView, 
                        bio: employeeViewModelAtIndex.bio)
 
         return cell
-    }
-
-    // MARK: - EmptyDataSetSource & EmptyDataSetDelegate
-
-    func title(forEmptyDataSet scrollView: UIScrollView) -> NSAttributedString? {
-        let string = "No Employees"
-        let attributes = [NSAttributedString.Key.font: UIFont.preferredFont(forTextStyle: .headline), NSAttributedString.Key.foregroundColor: UIColor.white]
-        return NSAttributedString(string: string, attributes: attributes)
-    }
-
-    func description(forEmptyDataSet scrollView: UIScrollView) -> NSAttributedString? {
-        let string = "There is a 5 second delay to simulate an empty data"
-        let attributes = [NSAttributedString.Key.font: UIFont.preferredFont(forTextStyle: .body), NSAttributedString.Key.foregroundColor: UIColor.white]
-        return NSAttributedString(string: string, attributes: attributes)
-    }
-
-    func image(forEmptyDataSet scrollView: UIScrollView) -> UIImage? {
-        let config = UIImage.SymbolConfiguration(
-            pointSize: 100, weight: .medium, scale: .default)
-        let emptyImage = UIImage(systemName: "person.3.fill", withConfiguration: config)
-        return emptyImage
-    }
-
-    func imageTintColor(forEmptyDataSet scrollView: UIScrollView) -> UIColor? {
-        return UIColor.white
-    }
-
-    // TODO: fix verticalOffset pull to refresh (https://github.com/Xiaoye220/EmptyDataSet-Swift/issues/52)
-    func verticalOffset(forEmptyDataSet scrollView: UIScrollView) -> CGFloat {
-        return -80
     }
 }

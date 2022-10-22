@@ -18,6 +18,4 @@ extension UIStoryboard {
         // swiftlint:disable:next force_cast
         return instantiateViewController(withIdentifier: String(describing: Controller.self)) as! Controller
     }
-
-    static let employees = UIStoryboard.named("Employees")
 }

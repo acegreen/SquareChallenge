@@ -46,14 +46,14 @@ class EmployeesTableViewController: UITableViewController, EmployeesModuleView, 
     private func setStyling() {
         title = NSLocalizedString("Square Challenge", comment: "")
         tableView.backgroundColor = Constants.cashGreen
-        
+
         tableView.refreshControl = UIRefreshControl()
         let attributes = [NSAttributedString.Key.font: UIFont.preferredFont(forTextStyle: .body), NSAttributedString.Key.foregroundColor: UIColor.white]
         tableView.refreshControl?.attributedTitle = NSAttributedString(string: "Refreshing...",
                                                                        attributes: attributes)
         tableView.refreshControl?.tintColor = .white
         tableView.refreshControl?.addTarget(self, action: #selector(pullToRefreshAction), for: .valueChanged)
-        
+
         tableView.emptyDataSetView { emptyView in
             let titleAttributes = [NSAttributedString.Key.font: UIFont.preferredFont(forTextStyle: .headline), NSAttributedString.Key.foregroundColor: UIColor.white]
             let descriptionAtrributes = [NSAttributedString.Key.font: UIFont.preferredFont(forTextStyle: .body), NSAttributedString.Key.foregroundColor: UIColor.white]
@@ -64,7 +64,7 @@ class EmployeesTableViewController: UITableViewController, EmployeesModuleView, 
             emptyView.image(UIImage(systemName: "person.3.fill", withConfiguration: imageConfig))
             emptyView.imageTintColor(.white)
             // TODO: fix verticalOffset pull to refresh (https://github.com/Xiaoye220/EmptyDataSet-Swift/issues/52)
-            emptyView.verticalOffset(-80)
+            emptyView.verticalOffset(-60)
         }
     }
 

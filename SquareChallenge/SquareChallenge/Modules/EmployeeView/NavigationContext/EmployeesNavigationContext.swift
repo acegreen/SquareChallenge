@@ -27,7 +27,7 @@ enum EmployeesNavigationContext: NavigationContext {
     var view: ModuleView {
         switch self {
         case .main:
-            return UIStoryboard.employees.controller(class: EmployeesTableViewController.self)
+            return Constants.employeesStoryboard.controller(class: EmployeesTableViewController.self)
         }
     }
 }

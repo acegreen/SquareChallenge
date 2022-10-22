@@ -11,6 +11,7 @@ import AGViperKit
 
 enum EmployeesNavigationContext: NavigationContext {
     case main
+    case detail(employeeViewModel: EmployeeViewModel)
 
     var presenter: ModulePresenter {
         return EmployeesPresenter()
@@ -28,6 +29,10 @@ enum EmployeesNavigationContext: NavigationContext {
         switch self {
         case .main:
             return Constants.Storyboards.employees.controller(class: EmployeesTableViewController.self)
+        case .detail(let employeeViewModel):
+            let controller = Constants.Storyboards.employeeDetail.controller(class: EmployeeDetailViewController.self)
+            controller.viewModel = employeeViewModel
+            return controller
         }
     }
 }

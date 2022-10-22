@@ -12,12 +12,16 @@ public class EmployeeViewModel: Codable, Equatable {
     let name: String
     let team: String
     let bio: String
+    let phone: String
+    let email: String
 
-    public init(photoURL: URL?, name: String, team: String, bio: String) {
+    public init(photoURL: URL?, name: String, team: String, bio: String, phone: String, email: String) {
         self.photoURL = photoURL
         self.name = name
         self.team = team
         self.bio = bio
+        self.phone = phone
+        self.email = email
     }
 }
 
@@ -50,7 +54,9 @@ extension Employees {
             return EmployeeViewModel(photoURL: employee.getImageURL(),
                                      name: employee.name,
                                      team: employee.team,
-                                     bio: employee.bio)
+                                     bio: employee.bio,
+                                     phone: employee.phone,
+                                     email: employee.email)
         }
         return EmployeesViewModel(employeeViewModels: employeeViewModels)
     }
@@ -61,6 +67,8 @@ extension Employee {
         return EmployeeViewModel(photoURL: getImageURL(),
                                  name: name,
                                  team: team,
-                                 bio: bio)
+                                 bio: bio,
+                                 phone: phone,
+                                 email: email)
     }
 }

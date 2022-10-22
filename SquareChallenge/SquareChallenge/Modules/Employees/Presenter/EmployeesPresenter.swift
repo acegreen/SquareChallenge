@@ -11,6 +11,7 @@ import PromiseKit
 
 protocol EmployeesModulePresenter: ModulePresenter {
     func updateView() -> Promise<EmployeesViewModel>
+    func navigateToEmployeeDetail(employeeViewModel: EmployeeViewModel)
 }
 
 class EmployeesPresenter: EmployeesModulePresenter {
@@ -29,5 +30,9 @@ class EmployeesPresenter: EmployeesModulePresenter {
 
     func updateView() -> Promise<EmployeesViewModel> {
         return self.interactor.fetchEmployees().map { $0.asEmployeesViewModel() }
+    }
+
+    func navigateToEmployeeDetail(employeeViewModel: EmployeeViewModel) {
+        router.navigate(fromView: view, toContext: EmployeesNavigationContext.detail(employeeViewModel: employeeViewModel))
     }
 }

@@ -20,7 +20,7 @@ class EmployeesTableViewController: UITableViewController, EmployeesModuleView {
 
     var presenter: EmployeesModulePresenter!
 
-    var employeesViewModel: EmployeesViewModel? {
+    var viewModel: EmployeesViewModel? {
         didSet {
             DispatchQueue.main.asyncAfter(deadline: .now() + 5) {
                 self.tableView.reloadData()
@@ -69,15 +69,15 @@ class EmployeesTableViewController: UITableViewController, EmployeesModuleView {
     }
 
     private func fetchEmployees() {
-        self.employeesViewModel = nil
+        self.viewModel = nil
         DispatchQueue.main.async {
             self.tableView.reloadEmptyDataSet()
         }
         presenter.updateView().done { [weak self] (employees: EmployeesViewModel) in
-            self?.employeesViewModel = employees
+            self?.viewModel = employees
         }.catch { error in
             debugPrint(error)
-            self.employeesViewModel = nil
+            self.viewModel = nil
             self.tableView.reloadEmptyDataSet()
         }
     }
@@ -98,14 +98,14 @@ class EmployeesTableViewController: UITableViewController, EmployeesModuleView {
     }
 
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return employeesViewModel?.getEmployeesCount() ?? 0
+        return viewModel?.getEmployeesCount() ?? 0
     }
 
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
 
         guard let cell = tableView.dequeueReusableCell(withIdentifier: EmployeeCellIdentifier.employeeCell,
                                                        for: indexPath) as? EmployeeTableViewCell,
-              let employeeViewModelAtIndex = employeesViewModel?.getEmployee(at: indexPath.row) else { return UITableViewCell() }
+              let employeeViewModelAtIndex = viewModel?.getEmployee(at: indexPath.row) else { return UITableViewCell() }
 
         cell.configure(photoURL: employeeViewModelAtIndex.photoURL,
                        name: employeeViewModelAtIndex.name,
@@ -113,5 +113,10 @@ class EmployeesTableViewController: UITableViewController, EmployeesModuleView {
                        bio: employeeViewModelAtIndex.bio)
 
         return cell
+    }
+
+    override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        guard let employeeViewModel = viewModel?.employeeViewModels[indexPath.row] else { return }
+        presenter.navigateToEmployeeDetail(employeeViewModel: employeeViewModel)
     }
 }

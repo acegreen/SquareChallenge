@@ -44,7 +44,7 @@ class EmployeesTableViewController: UITableViewController, EmployeesModuleView {
     }
 
     private func setStyling() {
-        title = NSLocalizedString("Square Challenge", comment: "")
+        title = NSLocalizedString("Employees", comment: "")
         tableView.backgroundColor = Constants.cashGreen
 
         tableView.refreshControl = UIRefreshControl()

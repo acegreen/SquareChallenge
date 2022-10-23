@@ -40,6 +40,7 @@ class EmployeeDetailViewController: UIViewController, EmployeeDetailModuleView {
     }
 
     func setStyling() {
+        title = NSLocalizedString("\(viewModel?.name ?? "Employee")", comment: "")
         view.backgroundColor = Constants.cashGreen
     }
 

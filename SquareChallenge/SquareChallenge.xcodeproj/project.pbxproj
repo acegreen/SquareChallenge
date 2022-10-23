@@ -11,6 +11,8 @@
 		23017F3928FF1CB400A2C597 /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 23017F3828FF1CB400A2C597 /* Constants.swift */; };
 		231529AD2904538F001D5E42 /* EmployeeDetail.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 231529AC2904538F001D5E42 /* EmployeeDetail.storyboard */; };
 		231529B0290453A4001D5E42 /* EmployeeDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 231529AF290453A4001D5E42 /* EmployeeDetailViewController.swift */; };
+		231529B2290599D7001D5E42 /* MainTabBarController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 231529B1290599D7001D5E42 /* MainTabBarController.swift */; };
+		231529B529059BFA001D5E42 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 231529B429059BFA001D5E42 /* Main.storyboard */; };
 		2394952A2904160B006A5493 /* EmployeeViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 239495162904160B006A5493 /* EmployeeViewModel.swift */; };
 		2394952B2904160B006A5493 /* EmployeesNavigationContext.swift in Sources */ = {isa = PBXBuildFile; fileRef = 239495182904160B006A5493 /* EmployeesNavigationContext.swift */; };
 		2394952C2904160B006A5493 /* Employee.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2394951A2904160B006A5493 /* Employee.swift */; };
@@ -67,6 +69,8 @@
 		23017F3828FF1CB400A2C597 /* Constants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Constants.swift; sourceTree = "<group>"; };
 		231529AC2904538F001D5E42 /* EmployeeDetail.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = EmployeeDetail.storyboard; sourceTree = "<group>"; };
 		231529AF290453A4001D5E42 /* EmployeeDetailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EmployeeDetailViewController.swift; sourceTree = "<group>"; };
+		231529B1290599D7001D5E42 /* MainTabBarController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainTabBarController.swift; sourceTree = "<group>"; };
+		231529B429059BFA001D5E42 /* Main.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Main.storyboard; sourceTree = "<group>"; };
 		239495162904160B006A5493 /* EmployeeViewModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EmployeeViewModel.swift; sourceTree = "<group>"; };
 		239495182904160B006A5493 /* EmployeesNavigationContext.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EmployeesNavigationContext.swift; sourceTree = "<group>"; };
 		2394951A2904160B006A5493 /* Employee.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Employee.swift; sourceTree = "<group>"; };
@@ -127,6 +131,15 @@
 				231529AF290453A4001D5E42 /* EmployeeDetailViewController.swift */,
 			);
 			path = EmployeeDetail;
+			sourceTree = "<group>";
+		};
+		231529B3290599D9001D5E42 /* Main */ = {
+			isa = PBXGroup;
+			children = (
+				231529B429059BFA001D5E42 /* Main.storyboard */,
+				231529B1290599D7001D5E42 /* MainTabBarController.swift */,
+			);
+			path = Main;
 			sourceTree = "<group>";
 		};
 		239495142904160B006A5493 /* Employees */ = {
@@ -266,6 +279,7 @@
 			isa = PBXGroup;
 			children = (
 				239495142904160B006A5493 /* Employees */,
+				231529B3290599D9001D5E42 /* Main */,
 			);
 			path = Modules;
 			sourceTree = "<group>";
@@ -412,6 +426,7 @@
 				23BB621528FEB1F400458905 /* LaunchScreen.storyboard in Resources */,
 				23BB621228FEB1F400458905 /* Assets.xcassets in Resources */,
 				23BB625D28FECF6600458905 /* Employees.json in Resources */,
+				231529B529059BFA001D5E42 /* Main.storyboard in Resources */,
 				239495312904160B006A5493 /* Employees.storyboard in Resources */,
 				231529AD2904538F001D5E42 /* EmployeeDetail.storyboard in Resources */,
 			);
@@ -534,6 +549,7 @@
 			files = (
 				2394952A2904160B006A5493 /* EmployeeViewModel.swift in Sources */,
 				23BB620928FEB1F300458905 /* AppDelegate.swift in Sources */,
+				231529B2290599D7001D5E42 /* MainTabBarController.swift in Sources */,
 				23BB626728FECFF900458905 /* StyledNavigationController.swift in Sources */,
 				239495322904160B006A5493 /* EmployeeTableViewCell.swift in Sources */,
 				2394952E2904160B006A5493 /* EmployeesAPIConfiguration.swift in Sources */,

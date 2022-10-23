@@ -14,11 +14,10 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
 
-        let employeesViewController = EmployeesNavigationContext.main.asViewController()
-        let navigationViewController = StyledNavigationController(rootViewController: employeesViewController)
+        let tabBarController = UIStoryboard.named("Main").instantiateInitialViewController()
 
         window = UIWindow(frame: UIScreen.main.bounds)
-        window?.rootViewController = navigationViewController
+        window?.rootViewController = tabBarController
         window?.makeKeyAndVisible()
 
         return true

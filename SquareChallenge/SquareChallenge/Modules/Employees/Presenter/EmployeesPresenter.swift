@@ -33,6 +33,6 @@ class EmployeesPresenter: EmployeesModulePresenter {
     }
 
     func navigateToEmployeeDetail(employeeViewModel: EmployeeViewModel) {
-        router.navigate(fromView: view, toContext: EmployeesNavigationContext.detail(employeeViewModel: employeeViewModel))
+        router.navigate(fromView: view, toContext: EmployeesNavigationContext.detail(employeeViewModel: employeeViewModel), style: .presented())
     }
 }
